@@ -1,0 +1,103 @@
+<style>
+    .root {
+
+        color: #e67e22;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: DM Sans;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+    }
+
+    .heading {
+
+        background: #ecf0f1;
+        width: 1200px;
+        height: auto;
+        border-radius: 10px;
+
+    }
+
+    .mainheading {
+
+        background: #8e44ad;
+        height: 180vh;
+        display: flex;
+        justify-content: center;
+         
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Flight Enquiry System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@500;600&family=DM+Sans:wght@700&family=Lato:ital,wght@1,700&family=Lobster&family=Oxygen:wght@700&family=Source+Code+Pro&display=swap"
+        rel="stylesheet">
+
+
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    
+    <div class="mainheading">
+        <div class="heading">
+            <div class="root"><img src="/images/Spicejet.png" alt="Error loading image" width="125px">Flight Enquiry
+                System</div>
+            <table class="striped">
+                <thead>
+                    <tr>
+                    <th>Flight Id</th>
+                    <th>Company Name</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Type</th>
+                    <th>Class</th>
+                    <th>Days</th>
+                    <th>Update</th>
+                </tr>
+                </thead>
+                <tbody>
+                         <% data.map((item)=>{ %>
+                        <tr>
+                           <td><%= item.flightid %></td>
+                           <th><%= item.companyname %>
+                            <a href="/flightnew/showpicture?flightid=<%= item.flightid %>&companyname=<%= item.companyname %>&logo=<%= item.logo %>">
+                            <img src="/images/<%= item.logo %>" width="40">  
+                        </a>
+                        </th>
+                            <td><%= item.sc %><br><%= item.sourcetiming %></td>
+                            <td><%= item.dc %><br><%= item.destinationtiming %></td>
+                            <td><%= item.status %></td>
+                            <td><%= item.flightclass %></td>
+                            <td><%= item.days %></td>
+                            <td><a href="/flightnew/displaybyid?flightid=<%=item.flightid %>">Update</a></td>
+                        </th>
+                        </tr>
+                        <% }) %>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</body>
+</html>
